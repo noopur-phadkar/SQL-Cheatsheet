@@ -1,12 +1,5 @@
 # SQL-Cheatsheet
 
-Resources-
-
-1. https://sqlbolt.com/lesson/introduction
-2. https://www.techagilist.com/mainframe/db2/db2-join-inner-joins-and-outer-joins/
-3. https://www.w3schools.com/sql/default.asp
-4. https://learn.microsoft.com/en-us/power-query/merge-queries-left-outer
-
 # What is SQL?
 
 SQL, or Structured Query Language, is a language designed to allow both technical and non-technical users query, manipulate, and transform data from a relational database. And due to its simplicity, SQL databases provide safe and scalable storage for millions of websites and mobile applications.
@@ -1000,3 +993,10 @@ WHERE column
 7. Intersection
 8. Exceptions ??
 9. Anti-joins
+
+# Resources-
+
+1. https://sqlbolt.com/lesson/introduction
+2. https://www.techagilist.com/mainframe/db2/db2-join-inner-joins-and-outer-joins/
+3. https://www.w3schools.com/sql/default.asp
+4. https://learn.microsoft.com/en-us/power-query/merge-queries-left-outer
