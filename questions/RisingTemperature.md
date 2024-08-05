@@ -8,9 +8,9 @@
 | recordDate | date |
 | temperature | int |
 
-id is the column with unique values for this table.
-There are no different rows with the same recordDate.
-This table contains information about the temperature on a certain day.
+- id is the column with unique values for this table.
+- There are no different rows with the same recordDate.
+- This table contains information about the temperature on a certain day.
  
 
 ## Question
@@ -40,8 +40,8 @@ Output:
 | 4  |
 
 Explanation: 
-In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
-In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
+- In 2015-01-02, the temperature was higher than the previous day (10 -> 25).
+- In 2015-01-04, the temperature was higher than the previous day (20 -> 30).
 
 ## Solution
 ```sql
