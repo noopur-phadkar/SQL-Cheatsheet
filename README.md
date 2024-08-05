@@ -1,7 +1,5 @@
 # SQL-Cheatsheet
 
-# Table of Contents
-
 Resources-
 
 1. https://sqlbolt.com/lesson/introduction
