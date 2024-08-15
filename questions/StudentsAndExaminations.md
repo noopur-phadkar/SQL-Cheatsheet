@@ -1,4 +1,4 @@
-# Students An dExaminations
+# Students And Examinations
 
 ## Table: Students
 
@@ -109,8 +109,51 @@ John attended the Math exam 1 time, the Physics exam 1 time, and the Programming
 
 ## Solution
 ```sql
-SELECT *
-    FROM Students
-    INNER JOIN Subjects
-    ORDER BY Students.student_id, Subjects.subject_name ASC;
+SELECT s.student_id, s.student_name, sub.subject_name, COUNT(e.student_id) AS attended_exams
+  FROM Students s
+  CROSS JOIN Subjects sub
+  LEFT JOIN Examinations e
+    ON s.student_id = e.student_id AND sub.subject_name = e.subject_name
+  GROUP BY s.student_id, s.student_name, sub.subject_name
+  ORDER BY s.student_id, sub.subject_name;
 ```
+
+# Notes
+
+This question was very difficult.
+
+To solve this problem, you can use SQL to aggregate and count the number of times each student attended each exam. The solution involves a few steps:
+1. **CROSS JOIN Students with Subjects:** This creates all possible combinations of students and subjects.
+2. **LEFT JOIN the resulting table with Examinations:** This ensures that even if a student hasn’t attended an exam, the combination still exists.
+3. **COUNT(e.student_id):** The COUNT function is used to count how many times the student attended a specific exam.
+4. **GROUP BY student_id, student_name, subject_name:** Grouping by these columns ensures we get the count of attended exams for each student-subject combination.
+5. **ORDER BY student_id, subject_name:** Finally, ordering by student_id and subject_name gives us the desired order.
+
+I was only about to reach the following on my own but couldn't figure out how to do the COUNT for attended_exams column.
+
+```sql
+SELECT table_join_1.student_id, table_join_1.student_name, table_join_1.subject_name
+,  COUNT(DISTINCT Examinations.subject_name, Examinations.student_id) AS attended_exams
+    FROM (SELECT *
+        FROM Students
+        INNER JOIN Subjects) AS table_join_1
+    LEFT JOIN Examinations
+        ON table_join_1.student_id = Examinations.student_id
+    GROUP BY table_join_1.student_id, table_join_1.subject_name
+    ORDER BY table_join_1.student_id, table_join_1.subject_name ASC;
+```
+my output (it's wrong)- 
+| student_id | student_name | subject_name | attended_exams |
+| ---------- | ------------ | ------------ | -------------- |
+| 1          | Alice        | Math         | 3              |
+| 1          | Alice        | Physics      | 3              |
+| 1          | Alice        | Programming  | 3              |
+| 2          | Bob          | Math         | 2              |
+| 2          | Bob          | Physics      | 2              |
+| 2          | Bob          | Programming  | 2              |
+| 6          | Alex         | Math         | 0              |
+| 6          | Alex         | Physics      | 0              |
+| 6          | Alex         | Programming  | 0              |
+| 13         | John         | Math         | 3              |
+| 13         | John         | Physics      | 3              |
+| 13         | John         | Programming  | 3              |
