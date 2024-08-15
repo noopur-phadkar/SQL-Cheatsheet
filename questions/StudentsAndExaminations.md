@@ -118,7 +118,7 @@ SELECT s.student_id, s.student_name, sub.subject_name, COUNT(e.student_id) AS at
   ORDER BY s.student_id, sub.subject_name;
 ```
 
-# Notes
+## Notes
 
 This question was very difficult.
 
